@@ -5,12 +5,14 @@
  */
 package grapevine;
 
+import java.util.Map;
+
 
 /**
  *
  * @author S.Valeror
  */
 public interface RemoteServer {
-    
-    
+    public String getIdMeeting() throws java.rmi.RemoteException;;
+    public Map<String, UserBackup> getBackup() throws java.rmi.RemoteException;;
 }
