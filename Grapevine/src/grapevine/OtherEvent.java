@@ -16,12 +16,14 @@ public class OtherEvent implements Event {
     
     @Override
     public GregorianCalendar getSchedule() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return schedule;
+ 
     }
 
-    @Override
     public void setSchedule(GregorianCalendar schedule) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.schedule = schedule;
+        
+        
     }
     
 }

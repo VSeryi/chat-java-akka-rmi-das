@@ -56,5 +56,7 @@ public class Diary {
         events.add(ev);
     }
     
-    
+    public boolean removeEvent (Event oldEvent) {
+        return events.remove(oldEvent);
+    }
 }

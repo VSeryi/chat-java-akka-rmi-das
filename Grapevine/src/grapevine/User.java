@@ -20,7 +20,6 @@ public class User  extends UnicastRemoteObject implements RemoteUser{
     private String username;
     private Inet4Address ip; 
     private Diary diary;
-    private String pene;
     
     public User (String username, Inet4Address ip) throws java.rmi.RemoteException{//Diary diary) {
         this.username = username;
@@ -78,6 +77,10 @@ public class User  extends UnicastRemoteObject implements RemoteUser{
     };
     @Override
     public void checkRequest (GregorianCalendar schedule) throws java.rmi.RemoteException{
+        
+    };
+    
+    public void activate () throws java.rmi.RemoteException{
         
     };
 

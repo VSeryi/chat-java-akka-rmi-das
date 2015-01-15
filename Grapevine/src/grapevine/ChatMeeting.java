@@ -27,8 +27,6 @@ public class ChatMeeting implements Event{
         return schedule;
     }
 
-    @Override
     public void setSchedule(GregorianCalendar schedule) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+        this.schedule = schedule;    }
 }
