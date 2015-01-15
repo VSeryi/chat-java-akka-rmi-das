@@ -80,6 +80,7 @@ public class User  extends UnicastRemoteObject implements RemoteUser{
         
     };
     
+    @Override
     public void activate () throws java.rmi.RemoteException{
         
     };

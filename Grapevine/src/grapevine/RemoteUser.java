@@ -29,5 +29,6 @@ public interface RemoteUser extends Remote  {
     public void createEvent (GregorianCalendar schedule) throws java.rmi.RemoteException;
     public void sendRequest (GregorianCalendar schedule, User users) throws java.rmi.RemoteException;
     public void checkRequest (GregorianCalendar schedule) throws java.rmi.RemoteException;
+    public void activate () throws java.rmi.RemoteException;
     
 }
