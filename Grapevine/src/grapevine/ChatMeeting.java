@@ -5,7 +5,7 @@
  */
 package grapevine;
 
-import grapevine.Event;
+import java.util.GregorianCalendar;
 
 /**
  *
@@ -13,10 +13,22 @@ import grapevine.Event;
  */
 public class ChatMeeting implements Event{
     
+    private GregorianCalendar schedule;
+        
     public void start(){
         
     }
     public void stop(){
         
+    }
+
+    @Override
+    public GregorianCalendar getSchedule() {
+        return schedule;
+    }
+
+    @Override
+    public void setSchedule(GregorianCalendar schedule) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

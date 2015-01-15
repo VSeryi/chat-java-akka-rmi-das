@@ -5,10 +5,23 @@
  */
 package grapevine;
 
+import java.util.GregorianCalendar;
+
 /**
  *
  * @author Álvaro Parras
  */
-public class OtherEvent extends Event {
+public class OtherEvent implements Event {
+    private GregorianCalendar schedule;
+    
+    @Override
+    public GregorianCalendar getSchedule() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void setSchedule(GregorianCalendar schedule) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

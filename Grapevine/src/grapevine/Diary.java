@@ -13,64 +13,47 @@ import java.util.ArrayList;
  */
 public class Diary {
     
-    private ArrayList <User> users;
+    private ArrayList <User> contacts;
     private ArrayList <Event> events;
     
-    public Diary (ArrayList <User> users, ArrayList <Event> events) {
-        if (users == null) {
-            this.users = new ArrayList();
-        }
-        else {
-            this.users = users;
-        }
-        if (events == null) {
-            this.events = new ArrayList();
-        }
-        else {
-            this.events = events;
-        }
+    public Diary (){
+        contacts = new ArrayList<>();
+        events = new ArrayList<>();
+    }
+    public Diary (ArrayList <User> contacts, ArrayList <Event> events) {
+        this.contacts = contacts;
+        this.events = events;
     }
     
-    public ArrayList <User> getUsers() {
-        return users;
+    public ArrayList <User> getContacts() {
+        return contacts;
     }
     
     public ArrayList <Event> getEvents() {
         return events;
     }
 
-    public void setUsers(ArrayList<User> users) {
-        this.users = users;
+    public void setContacts(ArrayList<User> contacts) {
+        this.contacts = contacts;
     }
 
     public void setEvents(ArrayList<Event> events) {
         this.events = events;
     }
     
-    public void addContact (User us) {
-        users.add(us);
-        us.setDiary(this);
+    public boolean addContact (User contact) {
+        if(contacts.contains(contact)){
+            return false;
+        }
+        return contacts.add(contact);
     }
     
-    public void removeContact (User us2){
-        if (users != null) {
-            for (User u: users) {
-                if (u.getIp().equals(us2.getIp())) {
-                    users.remove(u);
-                }
-                else{
-                    System.out.println("El contacto no esta en la agenda.");
-                }
-            }
-        }
-        else{
-            System.out.println("La agenda esta vacia");
-        }
+    public boolean removeContact (User oldContact){
+        return contacts.remove(oldContact);
     }
     
     public void addEvent (Event ev){
         events.add(ev);
-        ev.set
     }
     
     

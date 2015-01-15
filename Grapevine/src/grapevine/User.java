@@ -24,7 +24,7 @@ public class User  extends UnicastRemoteObject implements RemoteUser{
     public User (String username, Inet4Address ip) {//Diary diary) {
         this.username = username;
         this.ip = ip;
-        this.diary = diary;
+        this.diary = new Diary();
     }
 
     public String getUsername() {
