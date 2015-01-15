@@ -22,49 +22,62 @@ public class User  extends UnicastRemoteObject implements RemoteUser{
     private Diary diary;
     private String pene;
     
-    public User (String username, Inet4Address ip) {//Diary diary) {
+    public User (String username, Inet4Address ip) throws java.rmi.RemoteException{//Diary diary) {
         this.username = username;
         this.ip = ip;
         this.diary = new Diary();
     }
 
-    public String getUsername() {
+    @Override
+    public String getUsername() throws java.rmi.RemoteException{
         return username;
     }
 
-    public Inet4Address getIp() {
+    @Override
+    public Inet4Address getIp() throws java.rmi.RemoteException{
         return ip;
     }
     
-    public Diary getDiary() {
+    /**
+     *
+     * @return
+     * @throws RemoteException
+     */
+    @Override
+    public Diary getDiary() throws java.rmi.RemoteException{
         return diary;
     }
 
-    public void setUsername(String username) {
+    public void setUsername(String username){
         this.username = username;
     }
 
-    public void setIp(Inet4Address ip) {
+    public void setIp(Inet4Address ip){
         this.ip = ip;
     }
     
-    public void setDiary(Diary diary) {
+    public void setDiary(Diary diary){
         this.diary = diary;
     }
     
-    public void refreshIP (){
+    @Override
+    public void refreshIP ()throws java.rmi.RemoteException{
         
     };
-    public void createEvent (GregorianCalendar schedule, ArrayList<User> users){
+    @Override
+    public void createEvent (GregorianCalendar schedule, ArrayList<User> users)throws java.rmi.RemoteException{
         
     };
-    public void createEvent (GregorianCalendar schedule){
+    @Override
+    public void createEvent (GregorianCalendar schedule)throws java.rmi.RemoteException{
         
     };
-    public void sendRequest (GregorianCalendar schedule, User users){
+    @Override
+    public void sendRequest (GregorianCalendar schedule, User users)throws java.rmi.RemoteException{
         
     };
-    public void checkRequest (GregorianCalendar schedule) {
+    @Override
+    public void checkRequest (GregorianCalendar schedule) throws java.rmi.RemoteException{
         
     };
 

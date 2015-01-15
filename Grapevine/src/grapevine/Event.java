@@ -14,6 +14,7 @@ import java.util.GregorianCalendar;
 public interface Event {
     
 public GregorianCalendar getSchedule();
+
 public void setSchedule(GregorianCalendar schedule);
     
 }
