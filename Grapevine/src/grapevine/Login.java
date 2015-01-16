@@ -7,6 +7,8 @@ package grapevine;
 
 import javax.swing.JOptionPane;
 
+
+
 /**
  *
  * @author Álvaro Parras
@@ -102,6 +104,8 @@ public class Login extends javax.swing.JFrame {
                 + "Has ingresado satisfactoriamente al sistema",   "Mensaje de bienvenida",
                 JOptionPane.INFORMATION_MESSAGE);
                 //refreshIp();
+                InicioEvent formformulario1 = new InicioEvent ();
+                formformulario1.setVisible(true);
          }else {
                 JOptionPane.showMessageDialog(null, "Acceso denegado:\n"
                 + "Por favor ingrese un usuario y/o contraseña correctos", "Acceso denegado",
