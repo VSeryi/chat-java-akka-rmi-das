@@ -8,11 +8,8 @@ package grapevine;
 import java.io.Serializable;
 import java.util.GregorianCalendar;
 
-/**
- *
- * @author Álvaro Parras
- */
-public class ChatMessage implements Serializable{
+public class ChatMessage implements Serializable {
+
     private String text;
     private GregorianCalendar date;
 
@@ -35,7 +32,5 @@ public class ChatMessage implements Serializable{
     public void setDate(GregorianCalendar date) {
         this.date = date;
     }
-    
-    
-    
+
 }

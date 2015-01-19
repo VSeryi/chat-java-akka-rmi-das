@@ -29,6 +29,14 @@ public class Server {
         return idMeeting;
     }
 
+    public static Diary getDiary(String username) {
+        return getUserBackup(username).getDiary();
+    }
+
+    public static int getPort(String username) {
+        return getUserBackup(username).getPort();
+    }
+
     public void setIdMeeting(SecureRandom idMeeting) {
         this.idMeeting = idMeeting;
     }
@@ -49,13 +57,13 @@ public class Server {
     public static void updateDiary(String user, Diary diary) {
         UserBackup backup = getUserBackup(user);
         backup.setDiary(diary);
-        updateBackup(user,backup);
+        updateBackup(user, backup);
     }
-    
+
     public static void updatePort(String user, int port) {
         UserBackup backup = getUserBackup(user);
         backup.setPort(port);
-        updateBackup(user,backup);
+        updateBackup(user, backup);
     }
 
     public static void createUser(String user, int port) {
@@ -75,11 +83,4 @@ public class Server {
         return backup;
     }
 
-    public static Diary getDiary(String username) {
-        return getUserBackup(username).getDiary();
-    }
-    
-    public static int getPort(String username) {
-        return getUserBackup(username).getPort();
-    }
 }

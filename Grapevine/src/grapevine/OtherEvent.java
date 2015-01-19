@@ -10,10 +10,6 @@ import java.util.GregorianCalendar;
 import java.util.Locale;
 import java.util.Objects;
 
-/**
- *
- * @author Álvaro Parras
- */
 public class OtherEvent implements Event {
 
     private GregorianCalendar schedule;
@@ -41,7 +37,7 @@ public class OtherEvent implements Event {
         return schedule.compareTo(event.getSchedule());
     }
 
-     @Override
+    @Override
     public boolean equals(Object obj) {
         if (obj == null) {
             return false;
