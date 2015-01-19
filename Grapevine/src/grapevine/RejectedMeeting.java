@@ -7,11 +7,8 @@ package grapevine;
 
 import java.io.Serializable;
 
-/**
- *
- * @author S.Valeror
- */
-public class RejectedMeeting implements Serializable{
+public class RejectedMeeting implements Serializable {
+
     private Event event;
 
     public RejectedMeeting(Event event) {
@@ -25,5 +22,5 @@ public class RejectedMeeting implements Serializable{
     public void setEvent(Event event) {
         this.event = event;
     }
-    
+
 }

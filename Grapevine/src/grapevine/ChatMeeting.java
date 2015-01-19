@@ -10,35 +10,39 @@ import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.Objects;
 
-/**
- *
- * @author Álvaro Parras
- */
-public class ChatMeeting implements Event{
-    
+public class ChatMeeting implements Event {
+
     private GregorianCalendar schedule;
-    private ArrayList<String> participates;
-    
+    private ArrayList<String> participantes;
+
     public ChatMeeting(GregorianCalendar schedule, ArrayList<String> users) {
         this.schedule = schedule;
-        this.participates = users;
+        this.participantes = users;
     }
 
     public ArrayList<String> getParticipates() {
-        return participates;
+        return participantes;
+    }
+
+    @Override
+    public GregorianCalendar getSchedule() {
+        return schedule;
+    }
+
+    public void setSchedule(GregorianCalendar schedule) {
+        this.schedule = schedule;
+    }
+
+    @Override
+    public int compareTo(Object t) {
+        Event event = (Event) t;
+        return schedule.compareTo(event.getSchedule());
     }
 
     @Override
     public String toString() {
         SimpleDateFormat sdf = new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm");
         return sdf.format(schedule.getTime()); //To change body of generated methods, choose Tools | Templates.
-    }
-        
-    public void start(){
-        
-    }
-    public void stop(){
-        
     }
 
     @Override
@@ -61,20 +65,5 @@ public class ChatMeeting implements Event{
         }
         return true;
     }
-
-    @Override
-    public GregorianCalendar getSchedule() {
-        return schedule;
-    }
-
-    public void setSchedule(GregorianCalendar schedule) {
-        this.schedule = schedule;    }
-
-    @Override
-    public int compareTo(Object t) {
-        Event event = (Event) t;
-        return schedule.compareTo(event.getSchedule());
-    }
-
 
 }

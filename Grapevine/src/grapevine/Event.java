@@ -7,13 +7,12 @@ package grapevine;
 
 import java.util.GregorianCalendar;
 import java.io.Serializable;
-/**
- *
- * @author Álvaro Parras
- */
+
+
 public interface Event extends Serializable, Comparable {
     
 public GregorianCalendar getSchedule();
+
 @Override
 public String toString();
 }
