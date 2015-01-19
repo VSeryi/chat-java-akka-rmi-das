@@ -152,6 +152,11 @@ public class Grapevine extends javax.swing.JFrame {
                 loginButtonActionPerformed(evt);
             }
         });
+        loginButton.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                loginButtonKeyPressed(evt);
+            }
+        });
         loginPane.add(loginButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 420, -1, -1));
 
         backgroundLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/login/backgroundLogin.png"))); // NOI18N
@@ -557,8 +562,49 @@ public class Grapevine extends javax.swing.JFrame {
     }//GEN-LAST:event_backButtonMouseClicked
 
     private void usernameLoginKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usernameLoginKeyTyped
-
+         char c=evt.getKeyChar(); 
+          if(!((Character.isDigit(c)||(Character.isLetter(c))))) { 
+              getToolkit().beep();  
+              evt.consume();  
+              usernameLogin.setText("Ingresa Solo Letras o Numeros");      
+          } 
     }//GEN-LAST:event_usernameLoginKeyTyped
+
+    private void loginButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_loginButtonKeyPressed
+
+        if (evt.getKeyCode()==java.awt.event.KeyEvent.VK_ENTER){
+        String username = usernameLogin.getText();
+        if (username.isEmpty()) {
+            JOptionPane.showMessageDialog(this,
+                    "Debe introducir un nombre de usuario válido.",
+                    "Error con el usuario",
+                    JOptionPane.ERROR_MESSAGE);
+        } else {
+            try {
+                loginPane.setVisible(false);
+                int myPort;
+                try (ServerSocket s = new ServerSocket(0)) {
+                    myPort = s.getLocalPort();
+                }
+                mySystem = ActorSystem.create("chat", ConfigFactory.parseString("akka.remote.netty.tcp.port=\"" + myPort + "\"").withFallback(ConfigFactory.load()));
+                new File(Server.getPath()).mkdir();
+                if (Server.checkUser(username)) {
+                    Server.updatePort(username, myPort);
+                    myRef = mySystem.actorOf(Props.create(User.class, username, Server.getDiary(username), myPort, this), username);
+                } else {
+                    Server.createUser(username, myPort);
+                    myRef = mySystem.actorOf(Props.create(User.class, username, myPort, this), username);
+                }
+                System.out.println(myRef.path().toString());
+                Timer lookMeeting = new Timer();
+                lookMeeting.scheduleAtFixedRate(new revisorMeeting(myUser, this), 0, 10 * 1000);
+                menuPane.setVisible(true);
+            } catch (IOException ex) {
+                Logger.getLogger(Grapevine.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        }
+    }//GEN-LAST:event_loginButtonKeyPressed
 
     /**
      * @param args the command line arguments
