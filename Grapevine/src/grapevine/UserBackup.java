@@ -3,35 +3,37 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package grapevine;
 
-import java.net.Inet4Address;
+import java.io.Serializable;
 
 /**
  *
  * @author verde
  */
-public class UserBackup {
+public class UserBackup implements Serializable {
     
-    private Inet4Address ip;
+    private int port;
     private Diary diary;
-
-    public Inet4Address getIp() {
-        return ip;
+    
+    public UserBackup(int port){
+        this.port = port;
+        diary = new Diary();
+    }
+    public int getPort() {
+        return port;
     }
 
     public Diary getDiary() {
         return diary;
     }
 
-    public void setIp(Inet4Address ip) {
-        this.ip = ip;
+    public void setPort(int port) {
+        this.port = port;
     }
 
     public void setDiary(Diary diary) {
         this.diary = diary;
     }
-    
-    
+
 }

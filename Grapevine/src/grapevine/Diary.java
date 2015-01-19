@@ -6,57 +6,84 @@
 package grapevine;
 
 import java.util.ArrayList;
+import java.io.Serializable;
 
 /**
  *
  * @author Álvaro Parras
  */
-public class Diary {
+public class Diary implements Serializable {
     
-    private ArrayList <User> contacts;
-    private ArrayList <Event> events;
+    private ArrayList<String> contacts;
+    private ArrayList<ChatMeeting> meetings;
+    private ArrayList<OtherEvent> otherEvent;
     
-    public Diary (){
+    public Diary() {
         contacts = new ArrayList<>();
-        events = new ArrayList<>();
+        meetings = new ArrayList<>();
+        otherEvent = new ArrayList<>();
     }
-    public Diary (ArrayList <User> contacts, ArrayList <Event> events) {
-        this.contacts = contacts;
-        this.events = events;
+
+    Diary(Diary diary) {
+        contacts = new ArrayList<>(diary.getContacts());
+        meetings = new ArrayList<>(diary.getMeetings());
+        otherEvent = new ArrayList<>(diary.getOtherEvent());
     }
     
-    public ArrayList <User> getContacts() {
+    public ArrayList<String> getContacts() {
         return contacts;
     }
     
-    public ArrayList <Event> getEvents() {
-        return events;
-    }
-
-    public void setContacts(ArrayList<User> contacts) {
+    public void setContacts(ArrayList<String> contacts) {
         this.contacts = contacts;
     }
-
-    public void setEvents(ArrayList<Event> events) {
-        this.events = events;
+    
+    public ArrayList<ChatMeeting> getMeetings() {
+        return meetings;
     }
     
-    public boolean addContact (User contact) {
-        if(contacts.contains(contact)){
+    public void setMeetings(ArrayList<ChatMeeting> meetings) {
+        this.meetings = meetings;
+    }
+    
+    public ArrayList<OtherEvent> getOtherEvent() {
+        return otherEvent;
+    }
+    
+    public void setOtherEvent(ArrayList<OtherEvent> otherEvent) {
+        this.otherEvent = otherEvent;
+    }
+    
+    public boolean addContact(String contact) {
+        if (contacts.contains(contact)) {
             return false;
         }
         return contacts.add(contact);
     }
     
-    public boolean removeContact (User oldContact){
+    public boolean removeContact(String oldContact) {
         return contacts.remove(oldContact);
     }
     
-    public void addEvent (Event ev){
-        events.add(ev);
+    public boolean addEvent(Event event) {
+        if (meetings.contains(event) || otherEvent.contains(event)) {
+            return false;
+        }
+        if (event instanceof ChatMeeting) {
+            return meetings.add((ChatMeeting)event);
+        } else {
+            return otherEvent.add((OtherEvent) event);
+        }
+    }
+    public boolean removeEvent(Event event) {
+        if (meetings.contains(event) || otherEvent.contains(event)) {
+            return false;
+        }
+        if (event instanceof ChatMeeting) {
+            return meetings.remove((ChatMeeting)event);
+        } else {
+            return otherEvent.remove((OtherEvent) event);
+        }
     }
     
-    public boolean removeEvent (Event oldEvent) {
-        return events.remove(oldEvent);
-    }
 }

@@ -1,89 +1,103 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package grapevine;
 
-import java.net.Inet4Address;
+import akka.actor.UntypedActor;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
-import java.io.Serializable;
-import java.rmi.*;
-import java.rmi.server.UnicastRemoteObject;
 
-/**
- *
- * @author Álvaro Parras
- */
-public class User  extends UnicastRemoteObject implements RemoteUser{
+public class User extends UntypedActor implements Serializable{
+
     private String username;
-    private Inet4Address ip; 
+    private int port;
     private Diary diary;
+    private Grapevine myGUI;
+
+    public User(User user, Grapevine myGUI) {
+        this.username = user.getUsername();
+        this.port = user.getPort();
+        this.diary = new Diary(user.getDiary());
+        this.myGUI = myGUI;
+        this.myGUI.setMyUser(this);
+    }
     
-    public User (String username, Inet4Address ip) throws java.rmi.RemoteException{//Diary diary) {
+    public User(String username, int port, Grapevine myGUI) {
         this.username = username;
-        this.ip = ip;
+        this.port = port;
         this.diary = new Diary();
+        this.myGUI = myGUI;
+        this.myGUI.setMyUser(this);
     }
 
-    @Override
-    public String getUsername() throws java.rmi.RemoteException{
+    public User(String username, Diary diary, int port, Grapevine myGUI) {
+        this.username = username;
+        this.port = port;
+        this.diary = diary;
+        this.myGUI = myGUI;
+        this.myGUI.setMyUser(this);
+    }
+
+    public String getUsername() {
         return username;
     }
 
-    @Override
-    public Inet4Address getIp() throws java.rmi.RemoteException{
-        return ip;
+    public int getPort() {
+        return port;
     }
-    
-    /**
-     *
-     * @return
-     * @throws RemoteException
-     */
-    @Override
-    public Diary getDiary() throws java.rmi.RemoteException{
+
+    public Diary getDiary() {
         return diary;
     }
 
-    public void setUsername(String username){
+    public void setUsername(String username) {
         this.username = username;
     }
 
-    public void setIp(Inet4Address ip){
-        this.ip = ip;
+    public void setPort(int port) {
+        this.port = port;
     }
-    
-    public void setDiary(Diary diary){
+
+    public void setDiary(Diary diary) {
         this.diary = diary;
     }
-    
-    @Override
-    public void refreshIP ()throws java.rmi.RemoteException{
-        
-    };
-    @Override
-    public void createEvent (GregorianCalendar schedule, ArrayList<User> users)throws java.rmi.RemoteException{
-        
-    };
-    @Override
-    public void createEvent (GregorianCalendar schedule)throws java.rmi.RemoteException{
-        
-    };
-    @Override
-    public void sendRequest (GregorianCalendar schedule, User users)throws java.rmi.RemoteException{
-        
-    };
-    @Override
-    public void checkRequest (GregorianCalendar schedule) throws java.rmi.RemoteException{
-        
-    };
-    
-    @Override
-    public void activate () throws java.rmi.RemoteException{
-        
-    };
 
+    public void refreshIP() {
+
+    }
+
+    public void createEvent(GregorianCalendar schedule, ArrayList<String> users) {
+
+    }
+
+    public void createEvent(GregorianCalendar schedule) {
+
+    }
+
+    public void sendRequest(GregorianCalendar schedule, User users) {
+
+    }
+
+    public void checkRequest(GregorianCalendar schedule) {
+
+    }
     
+    public void activate() {
+
+    }
+
+    @Override
+    public void onReceive(Object o) throws Exception {
+        if (o instanceof Event) {
+           if(!(diary.addEvent((Event) o)))
+                getSender().tell(new RejectedMeeting((Event)o), getSelf());
+       } else if (o instanceof RejectedMeeting) {
+            diary.removeEvent(((RejectedMeeting) o).getEvent());
+       } else if (o instanceof ChatMessage) {
+           myGUI.writeChat(getSender().path().name(),(ChatMessage) o);
+        } else {
+            unhandled(o);
+        }
+    }
+
 }
+
+

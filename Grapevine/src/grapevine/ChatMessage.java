@@ -5,15 +5,20 @@
  */
 package grapevine;
 
+import java.io.Serializable;
 import java.util.GregorianCalendar;
 
 /**
  *
  * @author Álvaro Parras
  */
-public class ChatMessage {
+public class ChatMessage implements Serializable{
     private String text;
     private GregorianCalendar date;
+
+    public ChatMessage(String text) {
+        this.text = text;
+    }
 
     public String getText() {
         return text;
