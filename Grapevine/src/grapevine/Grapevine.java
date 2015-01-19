@@ -84,6 +84,10 @@ public class Grapevine extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        loginPane = new javax.swing.JLayeredPane();
+        usernameLogin = new javax.swing.JTextField();
+        loginButton = new javax.swing.JButton();
+        backgroundLogin = new javax.swing.JLabel();
         menuPane = new javax.swing.JLayeredPane();
         newContactButton = new javax.swing.JButton();
         deleteContactButton = new javax.swing.JButton();
@@ -92,10 +96,6 @@ public class Grapevine extends javax.swing.JFrame {
         bookDateButton = new javax.swing.JButton();
         deleteDateButton = new javax.swing.JButton();
         backgroundMenu = new javax.swing.JLabel();
-        loginPane = new javax.swing.JLayeredPane();
-        usernameLogin = new javax.swing.JTextField();
-        loginButton = new javax.swing.JButton();
-        backgroundLogin = new javax.swing.JLabel();
         chatPane = new javax.swing.JLayeredPane();
         sendButton = new javax.swing.JButton();
         scrollChat = new javax.swing.JScrollPane();
@@ -121,6 +121,47 @@ public class Grapevine extends javax.swing.JFrame {
         setName("Fondo"); // NOI18N
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        loginPane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        usernameLogin.setFont(new java.awt.Font("Raleway", 1, 24)); // NOI18N
+        usernameLogin.setForeground(new java.awt.Color(155, 39, 222));
+        usernameLogin.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        usernameLogin.setToolTipText("Nombre de Usuario");
+        usernameLogin.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(155, 39, 222), 4));
+        usernameLogin.setDisabledTextColor(new java.awt.Color(155, 39, 222));
+        usernameLogin.setDoubleBuffered(true);
+        usernameLogin.setSelectionColor(new java.awt.Color(155, 39, 222));
+        usernameLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                usernameLoginActionPerformed(evt);
+            }
+        });
+        usernameLogin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                usernameLoginKeyTyped(evt);
+            }
+        });
+        loginPane.add(usernameLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 340, 46));
+
+        loginButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/login/loginButton.png"))); // NOI18N
+        loginButton.setPreferredSize(new java.awt.Dimension(235, 49));
+        loginButton.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/login/loginButtonPush.png"))); // NOI18N
+        loginButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginButtonActionPerformed(evt);
+            }
+        });
+        loginPane.add(loginButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 420, -1, -1));
+
+        backgroundLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/login/backgroundLogin.png"))); // NOI18N
+        backgroundLogin.setText("jLabel1");
+        backgroundLogin.setMaximumSize(new java.awt.Dimension(400, 500));
+        backgroundLogin.setMinimumSize(new java.awt.Dimension(400, 500));
+        backgroundLogin.setPreferredSize(new java.awt.Dimension(400, 500));
+        loginPane.add(backgroundLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        getContentPane().add(loginPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         menuPane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -205,42 +246,6 @@ public class Grapevine extends javax.swing.JFrame {
         menuPane.add(backgroundMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         getContentPane().add(menuPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
-        loginPane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        usernameLogin.setFont(new java.awt.Font("Raleway", 1, 24)); // NOI18N
-        usernameLogin.setForeground(new java.awt.Color(155, 39, 222));
-        usernameLogin.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        usernameLogin.setToolTipText("Nombre de Usuario");
-        usernameLogin.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(155, 39, 222), 4));
-        usernameLogin.setDisabledTextColor(new java.awt.Color(155, 39, 222));
-        usernameLogin.setDoubleBuffered(true);
-        usernameLogin.setSelectionColor(new java.awt.Color(155, 39, 222));
-        usernameLogin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usernameLoginActionPerformed(evt);
-            }
-        });
-        loginPane.add(usernameLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 340, 46));
-
-        loginButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/login/loginButton.png"))); // NOI18N
-        loginButton.setPreferredSize(new java.awt.Dimension(235, 49));
-        loginButton.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/login/loginButtonPush.png"))); // NOI18N
-        loginButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loginButtonActionPerformed(evt);
-            }
-        });
-        loginPane.add(loginButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 420, -1, -1));
-
-        backgroundLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/login/backgroundLogin.png"))); // NOI18N
-        backgroundLogin.setText("jLabel1");
-        backgroundLogin.setMaximumSize(new java.awt.Dimension(400, 500));
-        backgroundLogin.setMinimumSize(new java.awt.Dimension(400, 500));
-        backgroundLogin.setPreferredSize(new java.awt.Dimension(400, 500));
-        loginPane.add(backgroundLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
-        getContentPane().add(loginPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         chatPane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -550,6 +555,10 @@ public class Grapevine extends javax.swing.JFrame {
         menuPane.setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_backButtonMouseClicked
+
+    private void usernameLoginKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usernameLoginKeyTyped
+
+    }//GEN-LAST:event_usernameLoginKeyTyped
 
     /**
      * @param args the command line arguments
