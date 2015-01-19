@@ -12,7 +12,8 @@ import java.util.TimerTask;
  *
  * @author S.Valeror
  */
-public class revisorMeeting extends TimerTask{
+public class revisorMeeting extends TimerTask {
+
     private User myUser;
     private Grapevine myProgram;
 
@@ -25,15 +26,14 @@ public class revisorMeeting extends TimerTask{
     public void run() {
         System.out.println("Checkeando");
         GregorianCalendar now = new GregorianCalendar();
-        for(Event event: myUser.getDiary().getMeetings()){
-            if(event.getSchedule().compareTo(now) < 1){
+        for (Event event : myUser.getDiary().getMeetings()) {
+            if (event.getSchedule().compareTo(now) < 1) {
                 myUser.getDiary().removeEvent(event);
                 myProgram.setMyMeeting((ChatMeeting) event);
                 myProgram.showChat();
             }
         }
-        
+
     }
-    
-    
+
 }

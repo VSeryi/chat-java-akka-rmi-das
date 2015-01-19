@@ -12,14 +12,15 @@ import java.io.Serializable;
  * @author verde
  */
 public class UserBackup implements Serializable {
-    
+
     private int port;
     private Diary diary;
-    
-    public UserBackup(int port){
+
+    public UserBackup(int port) {
         this.port = port;
         diary = new Diary();
     }
+
     public int getPort() {
         return port;
     }

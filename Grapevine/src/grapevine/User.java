@@ -5,7 +5,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
-public class User extends UntypedActor implements Serializable{
+public class User extends UntypedActor implements Serializable {
 
     private String username;
     private int port;
@@ -19,7 +19,7 @@ public class User extends UntypedActor implements Serializable{
         this.myGUI = myGUI;
         this.myGUI.setMyUser(this);
     }
-    
+
     public User(String username, int port, Grapevine myGUI) {
         this.username = username;
         this.port = port;
@@ -60,44 +60,19 @@ public class User extends UntypedActor implements Serializable{
         this.diary = diary;
     }
 
-    public void refreshIP() {
-
-    }
-
-    public void createEvent(GregorianCalendar schedule, ArrayList<String> users) {
-
-    }
-
-    public void createEvent(GregorianCalendar schedule) {
-
-    }
-
-    public void sendRequest(GregorianCalendar schedule, User users) {
-
-    }
-
-    public void checkRequest(GregorianCalendar schedule) {
-
-    }
-    
-    public void activate() {
-
-    }
-
     @Override
     public void onReceive(Object o) throws Exception {
         if (o instanceof Event) {
-           if(!(diary.addEvent((Event) o)))
-                getSender().tell(new RejectedMeeting((Event)o), getSelf());
-       } else if (o instanceof RejectedMeeting) {
+            if (!(diary.addEvent((Event) o))) {
+                getSender().tell(new RejectedMeeting((Event) o), getSelf());
+            }
+        } else if (o instanceof RejectedMeeting) {
             diary.removeEvent(((RejectedMeeting) o).getEvent());
-       } else if (o instanceof ChatMessage) {
-           myGUI.writeChat(getSender().path().name(),(ChatMessage) o);
+        } else if (o instanceof ChatMessage) {
+            myGUI.writeChat(getSender().path().name(), (ChatMessage) o);
         } else {
             unhandled(o);
         }
     }
 
 }
-
-
