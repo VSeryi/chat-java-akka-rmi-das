@@ -10,6 +10,7 @@ import akka.actor.ActorSelection;
 import akka.actor.ActorSystem;
 import akka.actor.Props;
 import com.typesafe.config.ConfigFactory;
+import java.io.File;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.util.ArrayList;
@@ -338,7 +339,7 @@ public class Grapevine extends javax.swing.JFrame {
                     myPort = s.getLocalPort();
                 }
                 mySystem = ActorSystem.create("chat", ConfigFactory.parseString("akka.remote.netty.tcp.port=\"" + myPort + "\"").withFallback(ConfigFactory.load()));
-
+                new File(Server.getPath()).mkdir();
                 if (Server.checkUser(username)) {
                     Server.updatePort(username, myPort);
                     myRef = mySystem.actorOf(Props.create(User.class, username, Server.getDiary(username), myPort,this),username);
