@@ -55,7 +55,6 @@ public class Grapevine extends javax.swing.JFrame {
     }
 
     public void showChat() {
-        this.myUser = myUser;
         menuPane.setVisible(false);
         createMeeting.setVisible(false);
         chatPane.setVisible(true);
