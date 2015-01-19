@@ -74,8 +74,14 @@ public class Grapevine extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        createMeeting = new javax.swing.JLayeredPane();
+        backButton = new javax.swing.JLabel();
+        requestButton = new javax.swing.JButton();
+        datePicker = new javax.swing.JSpinner();
+        scrollParticipate = new javax.swing.JScrollPane();
+        listParticipate = new javax.swing.JList();
+        backgroundCreateMeeting = new javax.swing.JLabel();
         chatPane = new javax.swing.JLayeredPane();
-        jLabel1 = new javax.swing.JLabel();
         sendButton = new javax.swing.JButton();
         scrollChat = new javax.swing.JScrollPane();
         listChat = new javax.swing.JList();
@@ -89,12 +95,6 @@ public class Grapevine extends javax.swing.JFrame {
         bookDateButton = new javax.swing.JButton();
         deleteDateButton = new javax.swing.JButton();
         backgroundMenu = new javax.swing.JLabel();
-        createMeeting = new javax.swing.JLayeredPane();
-        requestButton = new javax.swing.JButton();
-        datePicker = new javax.swing.JSpinner();
-        scrollParticipate = new javax.swing.JScrollPane();
-        listParticipate = new javax.swing.JList();
-        backgroundCreateMeeting = new javax.swing.JLabel();
         loginPane = new javax.swing.JLayeredPane();
         usernameLogin = new javax.swing.JTextField();
         loginButton = new javax.swing.JButton();
@@ -112,14 +112,48 @@ public class Grapevine extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        chatPane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        createMeeting.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+        backButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel1MouseClicked(evt);
+                backButtonMouseClicked(evt);
             }
         });
-        chatPane.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 80));
+        createMeeting.add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 80));
+
+        requestButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/createMeeting/requestButton.png"))); // NOI18N
+        requestButton.setPreferredSize(new java.awt.Dimension(235, 49));
+        requestButton.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/createMeeting/requestButtonPush.png"))); // NOI18N
+        requestButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                requestButtonActionPerformed(evt);
+            }
+        });
+        createMeeting.add(requestButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 440, -1, -1));
+
+        datePicker.setFont(new java.awt.Font("Raleway", 1, 18)); // NOI18N
+        datePicker.setModel(new javax.swing.SpinnerDateModel(new java.util.Date(), new java.util.Date(), null, java.util.Calendar.DAY_OF_MONTH));
+        datePicker.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(155, 39, 222), 2));
+        createMeeting.add(datePicker, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 370, 160, 40));
+
+        listParticipate.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(155, 39, 222), 2));
+        listParticipate.setFont(new java.awt.Font("Raleway", 1, 18)); // NOI18N
+        listParticipate.setForeground(new java.awt.Color(155, 39, 222));
+        listParticipate.setSelectionBackground(new java.awt.Color(155, 39, 222));
+        scrollParticipate.setViewportView(listParticipate);
+
+        createMeeting.add(scrollParticipate, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 340, 150));
+
+        backgroundCreateMeeting.setIcon(new javax.swing.ImageIcon(getClass().getResource("/createMeeting/backgroundCreateMeeting.png"))); // NOI18N
+        backgroundCreateMeeting.setText("jLabel1");
+        backgroundCreateMeeting.setMaximumSize(new java.awt.Dimension(400, 500));
+        backgroundCreateMeeting.setMinimumSize(new java.awt.Dimension(400, 500));
+        backgroundCreateMeeting.setPreferredSize(new java.awt.Dimension(400, 500));
+        createMeeting.add(backgroundCreateMeeting, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        getContentPane().add(createMeeting, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        chatPane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         sendButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/send.png"))); // NOI18N
         sendButton.setMaximumSize(new java.awt.Dimension(110, 41));
@@ -242,40 +276,6 @@ public class Grapevine extends javax.swing.JFrame {
 
         getContentPane().add(menuPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        createMeeting.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        requestButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/createMeeting/requestButton.png"))); // NOI18N
-        requestButton.setPreferredSize(new java.awt.Dimension(235, 49));
-        requestButton.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/createMeeting/requestButtonPush.png"))); // NOI18N
-        requestButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                requestButtonActionPerformed(evt);
-            }
-        });
-        createMeeting.add(requestButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 440, -1, -1));
-
-        datePicker.setFont(new java.awt.Font("Raleway", 1, 18)); // NOI18N
-        datePicker.setModel(new javax.swing.SpinnerDateModel(new java.util.Date(), new java.util.Date(), null, java.util.Calendar.DAY_OF_MONTH));
-        datePicker.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(155, 39, 222), 2));
-        createMeeting.add(datePicker, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 370, 160, 40));
-
-        listParticipate.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(155, 39, 222), 2));
-        listParticipate.setFont(new java.awt.Font("Raleway", 1, 18)); // NOI18N
-        listParticipate.setForeground(new java.awt.Color(155, 39, 222));
-        listParticipate.setSelectionBackground(new java.awt.Color(155, 39, 222));
-        scrollParticipate.setViewportView(listParticipate);
-
-        createMeeting.add(scrollParticipate, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 340, 150));
-
-        backgroundCreateMeeting.setIcon(new javax.swing.ImageIcon(getClass().getResource("/createMeeting/backgroundCreateMeeting.png"))); // NOI18N
-        backgroundCreateMeeting.setText("jLabel1");
-        backgroundCreateMeeting.setMaximumSize(new java.awt.Dimension(400, 500));
-        backgroundCreateMeeting.setMinimumSize(new java.awt.Dimension(400, 500));
-        backgroundCreateMeeting.setPreferredSize(new java.awt.Dimension(400, 500));
-        createMeeting.add(backgroundCreateMeeting, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
-        getContentPane().add(createMeeting, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
         loginPane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         usernameLogin.setFont(new java.awt.Font("Raleway", 1, 24)); // NOI18N
@@ -348,7 +348,7 @@ public class Grapevine extends javax.swing.JFrame {
                 }
                 System.out.println(myRef.path().toString());
                 Timer lookMeeting = new Timer();
-                lookMeeting.scheduleAtFixedRate(new revisorMeeting(myUser,this), 0, 60*1000);
+                lookMeeting.scheduleAtFixedRate(new revisorMeeting(myUser,this), 0, 10*1000);
                 menuPane.setVisible(true);
             } catch (IOException ex) {
                 Logger.getLogger(Grapevine.class.getName()).log(Level.SEVERE, null, ex);
@@ -367,7 +367,7 @@ public class Grapevine extends javax.swing.JFrame {
     private void newContactButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newContactButtonActionPerformed
         String contact = (String) JOptionPane.showInputDialog(
                 this,
-                "Introduzca el nombre de usuario de su Contacto y pulse OK",
+                "Introduzca el nombre de usuario de su Contacto y pulse Aceptar",
                 "Añadir Contacto",
                 JOptionPane.QUESTION_MESSAGE,
                 null,
@@ -459,13 +459,14 @@ public class Grapevine extends javax.swing.JFrame {
             participates.add(myUser.getUsername());
             GregorianCalendar date = new GregorianCalendar();
             date.setTime((Date) datePicker.getValue());
-            Event event = new ChatMeeting(date, participates);
+            ChatMeeting event = new ChatMeeting(date, participates);
             for (String participant : participates) {
                 int participantPort = Server.getPort(participant);
                 ActorSelection directParticipant = mySystem.actorSelection("akka.tcp://chat@127.0.0.1:" + participantPort + "/user/"+participant);
                 directParticipant.tell(event, myRef);
             }
-            if (!(myUser.getDiary().getMeetings().contains(event))) {
+            System.out.println(myUser.getDiary().getMeetings().toString());
+            if (!(myUser.getDiary().getMeetings().contains((event)))) {
                 for (String participant : participates) {
                     int participantPort = Server.getPort(participant);
                     ActorSelection directParticipant = mySystem.actorSelection("akka.tcp://chat@127.0.0.1:" + participantPort + "/user/"+participant);
@@ -503,11 +504,11 @@ public class Grapevine extends javax.swing.JFrame {
       }  // TODO add your handling code here:
     }//GEN-LAST:event_sendButtonActionPerformed
 
-    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+    private void backButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButtonMouseClicked
         createMeeting.setVisible(false);
         menuPane.setVisible(true);
         // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel1MouseClicked
+    }//GEN-LAST:event_backButtonMouseClicked
 
     /**
      * @param args the command line arguments
@@ -546,6 +547,7 @@ public class Grapevine extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel backButton;
     private javax.swing.JLabel backgroundChat;
     private javax.swing.JLabel backgroundCreateMeeting;
     private javax.swing.JLabel backgroundLoading;
@@ -557,7 +559,6 @@ public class Grapevine extends javax.swing.JFrame {
     private javax.swing.JSpinner datePicker;
     private javax.swing.JButton deleteContactButton;
     private javax.swing.JButton deleteDateButton;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JList listChat;
     private javax.swing.JList listParticipate;
     private javax.swing.JButton loginButton;

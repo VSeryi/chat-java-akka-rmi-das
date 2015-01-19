@@ -26,9 +26,9 @@ public class revisorMeeting extends TimerTask {
     public void run() {
         System.out.println("Checkeando");
         GregorianCalendar now = new GregorianCalendar();
-        for (Event event : myUser.getDiary().getMeetings()) {
+        for (ChatMeeting event : myUser.getDiary().getMeetings()) {
             if (event.getSchedule().compareTo(now) < 1) {
-                myUser.getDiary().removeEvent(event);
+                myUser.getDiary().removeMeeting(event);
                 myProgram.setMyMeeting((ChatMeeting) event);
                 myProgram.showChat();
             }

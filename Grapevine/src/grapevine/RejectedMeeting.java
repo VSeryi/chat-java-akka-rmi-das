@@ -9,17 +9,17 @@ import java.io.Serializable;
 
 public class RejectedMeeting implements Serializable {
 
-    private Event event;
+    private ChatMeeting event;
 
-    public RejectedMeeting(Event event) {
+    public RejectedMeeting(ChatMeeting event) {
         this.event = event;
     }
 
-    public Event getEvent() {
+    public ChatMeeting getMeeting() {
         return event;
     }
 
-    public void setEvent(Event event) {
+    public void setMeeting(ChatMeeting event) {
         this.event = event;
     }
 

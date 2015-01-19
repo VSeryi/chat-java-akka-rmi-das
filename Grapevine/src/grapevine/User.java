@@ -62,12 +62,12 @@ public class User extends UntypedActor implements Serializable {
 
     @Override
     public void onReceive(Object o) throws Exception {
-        if (o instanceof Event) {
-            if (!(diary.addEvent((Event) o))) {
-                getSender().tell(new RejectedMeeting((Event) o), getSelf());
+        if (o instanceof ChatMeeting) {
+            if (!(diary.addMeeting((ChatMeeting) o))) {
+                getSender().tell(new RejectedMeeting((ChatMeeting) o), getSelf());
             }
         } else if (o instanceof RejectedMeeting) {
-            diary.removeEvent(((RejectedMeeting) o).getEvent());
+            diary.removeMeeting(((RejectedMeeting) o).getMeeting());
         } else if (o instanceof ChatMessage) {
             myGUI.writeChat(getSender().path().name(), (ChatMessage) o);
         } else {

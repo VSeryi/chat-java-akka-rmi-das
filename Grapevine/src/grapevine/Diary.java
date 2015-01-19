@@ -65,26 +65,31 @@ public class Diary implements Serializable {
         return contacts.remove(oldContact);
     }
 
-    public boolean addEvent(Event event) {
-        if (meetings.contains(event) || otherEvent.contains(event)) {
+    public boolean addMeeting(ChatMeeting event) {
+        if (meetings.contains(event)) {
             return false;
         }
-        if (event instanceof ChatMeeting) {
-            return meetings.add((ChatMeeting) event);
-        } else {
-            return otherEvent.add((OtherEvent) event);
-        }
+        return meetings.add(event);
     }
 
-    public boolean removeEvent(Event event) {
-        if (meetings.contains(event) || otherEvent.contains(event)) {
+    public boolean addOtherEvent(OtherEvent event) {
+        if (otherEvent.contains(event)) {
             return false;
         }
-        if (event instanceof ChatMeeting) {
-            return meetings.remove((ChatMeeting) event);
-        } else {
-            return otherEvent.remove((OtherEvent) event);
-        }
+        return otherEvent.add((OtherEvent) event);
     }
 
+    public boolean removeMeeting(ChatMeeting event) {
+        if (meetings.contains(event)) {
+            return false;
+        }
+        return meetings.remove(event);
+    }
+
+    public boolean removeOtherEvent(OtherEvent event) {
+        if (otherEvent.contains(event)) {
+            return false;
+        }
+        return otherEvent.remove(event);
+    }
 }
